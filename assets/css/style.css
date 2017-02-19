@@ -1,4 +1,9 @@
+.container{ 
+font-family: fantasy;
+}
 h1 {font-family: fantasy;}
+
+
 
 .jumbotron{
 font-family: fantasy;
@@ -9,6 +14,7 @@ background-size: cover;
 }
 .col-md-4{
 	text-align: center;
+	font-size: 26px;
 	width: 100%;
 	height: 200px;
 	background-color: lavender;

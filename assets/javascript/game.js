@@ -1,6 +1,7 @@
 //variables
 
 var numberToWin = 0;
+var numberOptions = [];
 var mysticNum = 0; 
 var gelflingNum = 0; 
 var crystalNum = 0;
@@ -16,76 +17,116 @@ function startGame () {
 numberToWin = Math.floor((Math.random() * (120-19)) + 19);
 console.log(numberToWin);
 
-
 //append to quest div
 document.getElementById("quest").innerHTML = numberToWin;
 }
 
-//append to Crystal Magic Wisdom Love
-
-
-
 startGame();
 
-function crystalPower () {
-mysticNum = Math.floor((Math.random() * 12) + 1);
+//and generate random numbers for each dark crystal character div
+var numberOptions = [
+mysticNum = Math.floor((Math.random() * 12) + 1),
+
+gelflingNum = Math.floor((Math.random() *  12) + 1),
+
+crystalNum = Math.floor((Math.random() *  12) + 1),
+
+aughraNum = Math.floor((Math.random() *  12) + 1),
+];
 console.log(mysticNum);
-gelflingNum = Math.floor((Math.random() *  12) + 1);
 console.log(gelflingNum);
-crystalNum = Math.floor((Math.random() *  12) + 1);
 console.log(crystalNum);
-aughraNum = Math.floor((Math.random() *  12) + 1);
-console.log(aughraNum);
+console.log(aughraNum)
+
+// an utterly ridiulous amount of code. i know there's a cleaner way to write this but everything it try breaks the world
+// asign random number values to each charater 	
+	for (var i = 0; i < numberOptions.length; i++) {
+		var mysticImage = $("#mystic");
+		 mysticImage.attr("data-mysticvalue", mysticNum);
+	}
+
+	for (var i = 0; i < numberOptions.length; i++) {
+		var gelflingImage = $("#gelfling");
+		 gelflingImage.attr("data-gelfingvalue", gelflingNum);
+	}
+
+	for (var i = 0; i < numberOptions.length; i++) {
+		var shardImage = $("#shards");
+		 shardImage.attr("data-shardsvalue", crystalNum);
+	}
+
+	for (var i = 0; i < numberOptions.length; i++) {
+		var aughraImage = $("#aughra");
+		 aughraImage.attr("data-aughravalue", aughraNum);
+	}
+//of click functions for each character 
+function crystalPower () {
 
 $("#mystic").on("click", function() {
-	  var mysticNum = ($(this).attr("data-mysticNum"));
+	var mysticNum = ($(this).attr("data-mysticvalue"));
     mysticNum = parseInt(mysticNum);
     
     score += mysticNum;
 
-    alert("New score: " + score);
+    document.getElementById("score").innerHTML = score;
 
 })
 
 $("#gelfling").on("click", function() {
-	  var gelflingNum = ($(this).attr("data-gelflingNum"));
+	  var gelflingNum = ($(this).attr("data-gelfingvalue"));
     gelflingNum = parseInt(gelflingNum);
     
     score += gelflingNum;
 
-    alert("New score: " + score);
+    document.getElementById("score").innerHTML = score;
 
 })
 
 $("#shards").on("click", function() {
-	  var crystalNum = ($(this).attr("data-crystalNum"));
+	  var crystalNum = ($(this).attr("data-shardsvalue"));
     crystalNum = parseInt(crystalNum);
     
     score += crystalNum;
 
-    alert("New score: " + score);
+    document.getElementById("score").innerHTML = score;
 
 })
 
 $("#aughra").on("click", function() {
-	  var aughraNum = ($(this).attr("data-aughraNum"));
+	  var aughraNum = ($(this).attr("data-aughravalue"));
     aughraNum = parseInt(aughraNum);
     
     score += aughraNum;
 
-    alert("New score: " + score);
+    document.getElementById("score").innerHTML = score;
+
+  
 
 })
+
 };
 
 crystalPower ();
 
+  if (score === numberToWin) {
+      console.log("You win!");
+    }
+
+    else if (score >= numberToWin) {
+      console.log("You lose!!");
+    }
+
+  
+
+
+
+
+
 document.getElementById("win").innerHTML = winCount;
 document.getElementById("lose").innerHTML = lossCount;
 
-//$(document).on("click", ".btn btn-primary btn-lg",startGame,crystalPower);
 
-//and generate random numbers for each dark crystal character div
+
 
 //and attach to each character div 
 
