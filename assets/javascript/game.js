@@ -11,7 +11,13 @@ var winCount = 0;
 var lossCount = 0;
 
 //create button click for start quest button / reset game 
+function resetButton () {
+ $(document).on("click", "#clickme", function(){
+   alert('bleh');
 
+ });
+};
+resetButton();
 //generate random number 
 
 function startGame () {
@@ -58,9 +64,31 @@ console.log(aughraNum)
 		var aughraImage = $("#aughra");
 		 aughraImage.attr("data-aughravalue", aughraNum);
 	}
+
 }
 
 startGame();
+
+ //check for win/lose
+ function checkWinLose () {
+ 	if (score == numberToWin) {
+     	 winCount++;
+      	 alert("You Won!");
+
+      	 document.getElementById("win").innerHTML = winCount;
+    
+      	 startGame();
+ 	}
+
+    else if (score >= numberToWin) {
+       	 lossCount++;	
+       	 alert("You lose!!");
+      
+       	 document.getElementById("lose").innerHTML = lossCount;
+    
+       	 startGame();
+    };
+ };
 
 //on click functions for each character 
 
@@ -75,77 +103,43 @@ $("#mystic").on("click", function() {
 
     document.getElementById("score").innerHTML = score;
 
-     if (score == numberToWin) {
-      alert("You win!");
-      startGame();
-    }
-
-    else if (score >= numberToWin) {
-      alert("You lose!!");
-      startGame();
-    };
+    	checkWinLose ();
 
 });
 
 $("#gelfling").on("click", function() {
-	  var gelflingNum = ($(this).attr("data-gelfingvalue"));
-      gelflingNum = parseInt(gelflingNum);
+	var gelflingNum = ($(this).attr("data-gelfingvalue"));
+    gelflingNum = parseInt(gelflingNum);
     
     score += gelflingNum;
 
     document.getElementById("score").innerHTML = score;
 
-     if (score == numberToWin) {
-      alert("You win!");
-      startGame();
-    }
-
-    else if (score >= numberToWin) {
-      alert("You lose!!");
-      startGame();
-    };
+    	checkWinLose ();
 
 });
 
 $("#shards").on("click", function() {
-	  var crystalNum = ($(this).attr("data-shardsvalue"));
-      crystalNum = parseInt(crystalNum);
+	var crystalNum = ($(this).attr("data-shardsvalue"));
+    crystalNum = parseInt(crystalNum);
     
     score += crystalNum;
 
     document.getElementById("score").innerHTML = score;
      
-     if (score == numberToWin) {
-      alert("You win!");
-      startGame();
-    }
-
-    else if (score >= numberToWin) {
-      alert("You lose!!");
-      startGame();
-    };
+        checkWinLose ();
 
 });
 
 $("#aughra").on("click", function() {
-	  var aughraNum = ($(this).attr("data-aughravalue"));
-      aughraNum = parseInt(aughraNum);
+	var aughraNum = ($(this).attr("data-aughravalue"));
+    aughraNum = parseInt(aughraNum);
     
     score += aughraNum;
 
     document.getElementById("score").innerHTML = score;
      
-     if (score == numberToWin) {
-      alert("You win!");
-      startGame();
-    }
-
-    else if (score >= numberToWin) {
-      alert("You lose!!");
-      startGame();
-    };
-
-  
+  		checkWinLose ();  
 
 });
 
@@ -153,14 +147,14 @@ $("#aughra").on("click", function() {
 
 crystalPower ();
 
- 
 
+// i have no idea why these need to continue to live here, but when i comment them out everything breaks
 document.getElementById("win").innerHTML = winCount;
 document.getElementById("lose").innerHTML = lossCount;
 
 
 
-// if else statement for quest vs CMWL 
+ 
 
 //if quest == CMWL you win! flash you win image and win text over game play reset game
 
