@@ -13,15 +13,13 @@ var lossCount = 0;
 //create button click for start quest button / reset game 
 
 //generate random number 
+
 function startGame () {
 numberToWin = Math.floor((Math.random() * (120-19)) + 19);
 console.log(numberToWin);
 
 //append to quest div
 document.getElementById("quest").innerHTML = numberToWin;
-}
-
-startGame();
 
 //and generate random numbers for each dark crystal character div
 var numberOptions = [
@@ -38,8 +36,9 @@ console.log(gelflingNum);
 console.log(crystalNum);
 console.log(aughraNum)
 
-// an utterly ridiulous amount of code. i know there's a cleaner way to write this but everything it try breaks the world
+// an utterly ridiulous amount of code. i know there's a cleaner way to write this but everything i try breaks the world
 // asign random number values to each charater 	
+// and attach to each character div 
 	for (var i = 0; i < numberOptions.length; i++) {
 		var mysticImage = $("#mystic");
 		 mysticImage.attr("data-mysticvalue", mysticNum);
@@ -59,7 +58,13 @@ console.log(aughraNum)
 		var aughraImage = $("#aughra");
 		 aughraImage.attr("data-aughravalue", aughraNum);
 	}
-//of click functions for each character 
+}
+
+startGame();
+
+//on click functions for each character 
+
+//append crystal magic wisdom love with new score for every char click
 function crystalPower () {
 
 $("#mystic").on("click", function() {
@@ -70,75 +75,96 @@ $("#mystic").on("click", function() {
 
     document.getElementById("score").innerHTML = score;
 
-})
+     if (score == numberToWin) {
+      alert("You win!");
+      startGame();
+    }
+
+    else if (score >= numberToWin) {
+      alert("You lose!!");
+      startGame();
+    };
+
+});
 
 $("#gelfling").on("click", function() {
 	  var gelflingNum = ($(this).attr("data-gelfingvalue"));
-    gelflingNum = parseInt(gelflingNum);
+      gelflingNum = parseInt(gelflingNum);
     
     score += gelflingNum;
 
     document.getElementById("score").innerHTML = score;
 
-})
+     if (score == numberToWin) {
+      alert("You win!");
+      startGame();
+    }
+
+    else if (score >= numberToWin) {
+      alert("You lose!!");
+      startGame();
+    };
+
+});
 
 $("#shards").on("click", function() {
 	  var crystalNum = ($(this).attr("data-shardsvalue"));
-    crystalNum = parseInt(crystalNum);
+      crystalNum = parseInt(crystalNum);
     
     score += crystalNum;
 
     document.getElementById("score").innerHTML = score;
+     
+     if (score == numberToWin) {
+      alert("You win!");
+      startGame();
+    }
 
-})
+    else if (score >= numberToWin) {
+      alert("You lose!!");
+      startGame();
+    };
+
+});
 
 $("#aughra").on("click", function() {
 	  var aughraNum = ($(this).attr("data-aughravalue"));
-    aughraNum = parseInt(aughraNum);
+      aughraNum = parseInt(aughraNum);
     
     score += aughraNum;
 
     document.getElementById("score").innerHTML = score;
+     
+     if (score == numberToWin) {
+      alert("You win!");
+      startGame();
+    }
+
+    else if (score >= numberToWin) {
+      alert("You lose!!");
+      startGame();
+    };
 
   
 
-})
+});
 
 };
 
 crystalPower ();
 
-  if (score === numberToWin) {
-      console.log("You win!");
-    }
-
-    else if (score >= numberToWin) {
-      console.log("You lose!!");
-    }
-
-  
-
-
-
-
+ 
 
 document.getElementById("win").innerHTML = winCount;
 document.getElementById("lose").innerHTML = lossCount;
 
 
 
-
-//and attach to each character div 
-
-//onclick function for each character div to
-
-//append crystal magic wisdom love with new score for every char click
-
 // if else statement for quest vs CMWL 
 
-//if quest === CMWL you win! flash you win image and win text over game play
+//if quest == CMWL you win! flash you win image and win text over game play reset game
 
-//else quest >! CMWL you lose! flash lose image and lose text over game play
+//else quest >! CMWL you lose! flash lose image and lose text over game play reset game 
 // $(document).on("click", ".className", functionName);
 
 
