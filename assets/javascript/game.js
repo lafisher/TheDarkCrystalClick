@@ -11,16 +11,10 @@ var winCount = 0;
 var lossCount = 0;
 
 //create button click for start quest button / reset game 
-function resetButton () {
- $(document).on("click", "#clickme", function(){
-   alert('bleh');
 
- });
-};
-resetButton();
 //generate random number 
 
-function startGame () {
+function startGame () {  	
 numberToWin = Math.floor((Math.random() * (120-19)) + 19);
 console.log(numberToWin);
 
@@ -64,7 +58,7 @@ console.log(aughraNum)
 		var aughraImage = $("#aughra");
 		 aughraImage.attr("data-aughravalue", aughraNum);
 	}
-
+var score = 0;
 }
 
 startGame();
@@ -78,6 +72,7 @@ startGame();
       	 document.getElementById("win").innerHTML = winCount;
     
       	 startGame();
+      	 resetButton();
  	}
 
     else if (score >= numberToWin) {
@@ -87,6 +82,7 @@ startGame();
        	 document.getElementById("lose").innerHTML = lossCount;
     
        	 startGame();
+       	 resetButton();
     };
  };
 
@@ -104,7 +100,6 @@ $("#mystic").on("click", function() {
     document.getElementById("score").innerHTML = score;
 
     	checkWinLose ();
-
 });
 
 $("#gelfling").on("click", function() {
@@ -116,7 +111,6 @@ $("#gelfling").on("click", function() {
     document.getElementById("score").innerHTML = score;
 
     	checkWinLose ();
-
 });
 
 $("#shards").on("click", function() {
@@ -128,7 +122,6 @@ $("#shards").on("click", function() {
     document.getElementById("score").innerHTML = score;
      
         checkWinLose ();
-
 });
 
 $("#aughra").on("click", function() {
@@ -140,35 +133,31 @@ $("#aughra").on("click", function() {
     document.getElementById("score").innerHTML = score;
      
   		checkWinLose ();  
-
 });
 
 };
 
 crystalPower ();
 
+function resetButton () {
+ $(document).on("click", "#clickme", function(){
+  startGame();
+  var score = " ";
+  $('#score').text(score);
+
+ });
+};
+resetButton();
 
 // i have no idea why these need to continue to live here, but when i comment them out everything breaks
 document.getElementById("win").innerHTML = winCount;
 document.getElementById("lose").innerHTML = lossCount;
 
 
-
- 
-
 //if quest == CMWL you win! flash you win image and win text over game play reset game
 
 //else quest >! CMWL you lose! flash lose image and lose text over game play reset game 
 // $(document).on("click", ".className", functionName);
-
-
-
-
-
-
-
-
-
 
 //"What was sundered and undone"
 //"Shall be whole the Two made One"
