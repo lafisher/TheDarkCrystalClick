@@ -15,11 +15,13 @@ var lossCount = 0;
 //generate random number 
 
 function startGame () {  	
+var score =0;  
 numberToWin = Math.floor((Math.random() * (120-19)) + 19);
 console.log(numberToWin);
 
 //append to quest div
 document.getElementById("quest").innerHTML = numberToWin;
+document.getElementById("score").innerHTML = score;
 
 //and generate random numbers for each dark crystal character div
 var numberOptions = [
@@ -58,7 +60,7 @@ console.log(aughraNum)
 		var aughraImage = $("#aughra");
 		 aughraImage.attr("data-aughravalue", aughraNum);
 	}
-var score = 0;
+ 
 }
 
 startGame();
@@ -72,7 +74,6 @@ startGame();
       	 document.getElementById("win").innerHTML = winCount;
     
       	 startGame();
-      	 resetButton();
  	}
 
     else if (score >= numberToWin) {
@@ -82,7 +83,6 @@ startGame();
        	 document.getElementById("lose").innerHTML = lossCount;
     
        	 startGame();
-       	 resetButton();
     };
  };
 
@@ -142,9 +142,7 @@ crystalPower ();
 function resetButton () {
  $(document).on("click", "#clickme", function(){
   startGame();
-  var score = " ";
-  $('#score').text(score);
-
+ 
  });
 };
 resetButton();
