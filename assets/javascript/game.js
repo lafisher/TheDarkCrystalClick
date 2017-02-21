@@ -15,7 +15,7 @@ var lossCount = 0;
 //generate random number 
 
 function startGame () {  	
-var score =0;  
+score =0;  
 numberToWin = Math.floor((Math.random() * (120-19)) + 19);
 console.log(numberToWin);
 
@@ -74,6 +74,7 @@ startGame();
       	 document.getElementById("win").innerHTML = winCount;
     
       	 startGame();
+          
  	}
 
     else if (score >= numberToWin) {
@@ -83,6 +84,7 @@ startGame();
        	 document.getElementById("lose").innerHTML = lossCount;
     
        	 startGame();
+        
     };
  };
 
